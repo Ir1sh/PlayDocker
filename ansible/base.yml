@@ -12,10 +12,13 @@
           apt: pkg=vim state=latest
         - name: ensure git is the latest version
           apt: pkg=git state=latest
-        - name: create editor userspace
+        - name: create play group
           group: name=play state=present
+        - name: create play user
           user: name=play group=play groups="sudo" state=present
+        - name: create /home/play/code dir
           file: dest=/home/play/Code mode=755 owner=play group=play state=directory
+        - name: create /opt/activator dir
           file: dest=/opt/activator mode=755 ower=play group=play state=directory
         - name: Install Activator
           get_url: url=""http://downloads.typesafe.com/activator/{{ activator_version }}/activator-{{ activator_version }}.zip" dest=/tmp/activator-{{ activator_version }}.zip"
