@@ -20,9 +20,12 @@
           file: dest=/home/play/Code mode=755 owner=play group=play state=directory
         - name: create /opt/activator dir
           file: dest=/opt/activator mode=755 ower=play group=play state=directory
-        - name: Install Activator
+        - name: get Activator
           get_url: url=""http://downloads.typesafe.com/activator/{{ activator_version }}/activator-{{ activator_version }}.zip" dest=/tmp/activator-{{ activator_version }}.zip"
+        - name: unzip acivator
           raw: "if [ ! -d '/opt/activator/activator-{{ activator_version }}']; then unzip -q /tmp/activator-{{ activator_version }}.zip -d /opt/activator ; fi;"
+        - name: export path variable
           raw: "echo 'export PATH=$PATH:/opt/activator' >> /home/play/.bashrc"
+        - name: export java options variable
           raw: "echo 'export _JAVA_OPTIONS=\"-Duser.home=/home/play/Code\"' >> /home/play/.bashrc "
 
