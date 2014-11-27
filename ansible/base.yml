@@ -19,7 +19,7 @@
         - name: create /home/play/code dir
           file: dest=/home/play/Code mode=755 owner=play group=play state=directory
         - name: create /opt/activator dir
-          file: dest=/opt/activator mode=755 ower=play group=play state=directory
+          file: dest=/opt/activator mode=755 owner=play group=play state=directory
         - name: get Activator
           get_url: url=""http://downloads.typesafe.com/activator/{{ activator_version }}/activator-{{ activator_version }}.zip" dest=/tmp/activator-{{ activator_version }}.zip"
         - name: unzip acivator
