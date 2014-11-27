@@ -2,7 +2,7 @@
   - hosts: local
     sudo: yes
     vars:
-        activator_version: 2.2.6
+        activator_version: 1.2.10
     tasks:
         - name: ensure java is at the latest version
           apt: pkg=openjdk-7-jdk state=latest
@@ -21,9 +21,9 @@
         - name: create /opt/activator dir
           file: dest=/opt/activator mode=755 owner=play group=play state=directory
         - name: get Activator
-          get_url: url=""http://downloads.typesafe.com/activator/{{ activator_version }}/activator-{{ activator_version }}.zip" dest=/tmp/activator-{{ activator_version }}.zip"
+          get_url: url="'http://downloads.typesafe.com/activator/1.2.10/activator-1.2.10.zip' dest=/tmp/activator-1.2.10.zip"
         - name: unzip acivator
-          raw: "if [ ! -d '/opt/activator/activator-{{ activator_version }}']; then unzip -q /tmp/activator-{{ activator_version }}.zip -d /opt/activator ; fi;"
+          raw: "if [ ! -d '/opt/activator/activator-1.2.10']; then unzip -q /tmp/activator-1.2.10.zip -d /opt/activator ; fi;"
         - name: export path variable
           raw: "echo 'export PATH=$PATH:/opt/activator' >> /home/play/.bashrc"
         - name: export java options variable
