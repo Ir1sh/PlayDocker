@@ -5,7 +5,7 @@
         activator_version: 2.2.6
     tasks:
         - name: ensure java is at the latest version
-          apt: pkg=openjdk-8-jdk state=latest
+          apt: pkg=openjdk-7-jdk state=latest
         - name: ensure unzip is at the latest version
           apt: pkg=unzip state=latest
         - name: ensure vim is the latest version
