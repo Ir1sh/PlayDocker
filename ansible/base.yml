@@ -1,0 +1,25 @@
+---
+  - hosts: local
+    sudo: yes
+    vars:
+        activator_version: 2.2.6
+    tasks:
+        - name: ensure java is at the latest version
+          apt: pkg=openjdk-8-jdk state=latest
+        - name: ensure unzip is at the latest version
+          apt: pkg=unzip state=latest
+        - name: ensure vim is the latest version
+          apt: pkg=vim state=latest
+        - name: ensure git is the latest version
+          apt: pkg=git state=latest
+        - name: create editor userspace
+          group: name=play state=present
+          user: name=play group=play groups="sudo" state=present
+          file: dest=/home/play/Code mode=755 owner=play group=play state=directory
+          file: dest=/opt/activator mode=755 ower=play group=play state=directory
+        - name: Install Activator
+          get_url: url=""http://downloads.typesafe.com/activator/{{ activator_version }}/activator-{{ activator_version }}.zip" dest=/tmp/activator-{{ activator_version }}.zip"
+          raw: "if [ ! -d '/opt/activator/activator-{{ activator_version }}']; then unzip -q /tmp/activator-{{ activator_version }}.zip -d /opt/activator ; fi;"
+          raw: "echo 'export PATH=$PATH:/opt/activator' >> /home/play/.bashrc"
+          raw: "echo 'export _JAVA_OPTIONS=\"-Duser.home=/home/play/Code\"' >> /home/play/.bashrc "
+
