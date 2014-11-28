@@ -21,7 +21,7 @@
         - name: create /opt/activator dir
           file: dest=/opt/activator mode=755 owner=play group=play state=directory
         - name: get Activator
-          get_url: url="http://downloads.typesafe.com/activator/1.2.10/activator-1.2.10.zip" dest=/tmp/activator-1.2.10.zip
+          get_url: url="http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10.zip" dest=/tmp/activator-1.2.10.zip
         - name: unzip acivator
           raw: "if [ ! -d '/opt/activator/activator-1.2.10']; then unzip -q /tmp/activator-1.2.10.zip -d /opt/activator ; fi;"
         - name: export path variable
