@@ -26,6 +26,8 @@
           unarchive: src=/tmp/activator-1.2.10.zip dest=/tmp/
         - name: move activator to opt
           local_action: synchronize src=/tmp/activator-1.2.10/ dest=/opt/activator/ recursive=yes delete=yes
+        - name: give play user permissions for opt/activator
+          file: path=/opt/activator/ state=directory recurse=true mode=755
         - name: export path variable
           raw: "echo 'export PATH=$PATH:/opt/activator' >> /home/play/.bashrc"
         - name: export java options variable
