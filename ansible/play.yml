@@ -5,7 +5,7 @@
         activator_version: 1.2.10
     tasks:
         - name: go to tmp directory
-          command: chdir=/tmp/
+          command: chdir=/tmp/ ls
         - name: if Code dir is empty create new play app
           raw: "if [ ! '$(ls -A /home/play/Code)']; then activator new tempapp play-scala ; fi;"
         - name: move new app to Code Dir
