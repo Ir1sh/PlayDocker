@@ -23,9 +23,9 @@
         - name: get Activator
           get_url: url="http://downloads.typesafe.com/typesafe-activator/1.2.10/typesafe-activator-1.2.10.zip" dest=/tmp/activator-1.2.10.zip
         - name: unzip acivator
-          raw: "if [ ! -d '/opt/activator/activator']; then unzip -q /tmp/activator-1.2.10.zip -d /tmp/ ; fi;"
+          unarchive: src=/tmp/activator-1.2.10.zip dest=/tmp/
         - name: move activator to opt
-          raw: "if [ ! -d '/opt/activator/activator']; then mv -v /tmp/activator-1.2.10/* /opt/activator/ ; fi;"
+          local_action: synchronize src=/tmp/activator-1.2.10/ dest=/opt/activator/ recursive=yes delete=yes
         - name: export path variable
           raw: "echo 'export PATH=$PATH:/opt/activator' >> /home/play/.bashrc"
         - name: export java options variable
