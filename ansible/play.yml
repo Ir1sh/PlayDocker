@@ -11,6 +11,6 @@
         - name: move new app to Code Dir
           raw: "if [ ! '$(ls -A /home/play/Code)']; then mv -v /tmp/tempapp/* /home/play/Code/ ; fi;"
         - name: move to Code dir and run activator
-          command: chdir=/home/play/Code activator
+          command: chdir=/home/play/Code /opt/activator/activator
 
         
