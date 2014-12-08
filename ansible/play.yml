@@ -1,8 +1,6 @@
 ---
   - hosts: local
-    sudo: yes
-    vars:
-        activator_version: 1.2.10
+    sudo: yes 
     tasks:
         - name: go to tmp directory
           command: chdir=/tmp/ ls
